@@ -5,8 +5,8 @@
 #include "core.h"
 
 /*
-Vérifit si valeur absent d'une ligne de la grille
-@params	k	        Valeur à tester
+VÃ©rifit si valeur absent d'une ligne de la grille
+@params	k	        Valeur Ã  tester
 @params	grille	    Grille
 @params	i	        ligne
 @return 1 si absent, 0 sinon
@@ -22,8 +22,8 @@ int absentDeLigne(int k, int grille[9][9], int i){
 }
 
 /*
-Vérifit si valeur absent d'une colonne de la grille
-@params	k	        Valeur à tester
+VÃ©rifit si valeur absent d'une colonne de la grille
+@params	k	        Valeur Ã  tester
 @params	grille	    Grille
 @params	j	        colonne
 @return 1 si absent, 0 sinon
@@ -39,8 +39,8 @@ int absentDeColonne(int k, int grille[9][9], int j){
 }
 
 /*
-Vérifit si valeur absent d'un bloc de la grille
-@params	k	        Valeur à tester
+VÃ©rifit si valeur absent d'un bloc de la grille
+@params	k	        Valeur Ã  tester
 @params	grille	    Grille
 @params	i	        ligne
 @params	j	        colonne
@@ -49,7 +49,7 @@ Vérifit si valeur absent d'un bloc de la grille
 int absentDeBloc (int k, int grille[9][9], int i, int j){
     int _i = i-(i%3), _j = j-(j%3);
 
-    //On boucle le carré
+    //On boucle le carrÃ©
     for (i=_i; i < _i+3; i++){
         for (j=_j; j < _j+3; j++){
             if (grille[i][j] == k) return 0;
@@ -60,19 +60,19 @@ int absentDeBloc (int k, int grille[9][9], int i, int j){
 }
 
 /*
-Résout ou génère une grille
-@params	grille      Grille à résoudre
+RÃ©sout ou gÃ©nÃ¨re une grille
+@params	grille      Grille Ã  rÃ©soudre
 @params	position    Position en cours de test
-@params	generate    ndique si génération ou non
+@params	generate    ndique si gÃ©nÃ©ration ou non
 @return 1 si aucune erreur, 0 sinon
 */
 int resolve(int grille[9][9], int position, int generate){
     int k;
-    if(position == 9*9) return 1; //Grille résolue
+    if(position == 9*9) return 1; //Grille rÃ©solue
 
     int i = position/9, j = position%9;
 
-    //Case déjà cimpléter
+    //Case dÃ©jÃ  cimplÃ©ter
     if(grille[i][j] != 0)
         return resolve(grille, position+1, generate);
 
@@ -86,12 +86,12 @@ int resolve(int grille[9][9], int position, int generate){
             }
         }
     }
-    else{ //Génération
+    else{ //GÃ©nÃ©ration
         int nb;
         srand(time(NULL));
 
         for(k=1; k <= 20; k++){
-            nb = rand()%9 + 1; //On test des nombres aléatoires
+            nb = rand()%9 + 1; //On test des nombres alÃ©atoires
             if (absentDeLigne(nb,grille,i) && absentDeColonne(nb,grille,j) && absentDeBloc(nb,grille,i,j)){
                 grille[i][j] = nb;
 
@@ -101,25 +101,25 @@ int resolve(int grille[9][9], int position, int generate){
     }
     grille[i][j] = 0;
 
-    return 0; //Grille non résoluble
+    return 0; //Grille non rÃ©soluble
 }
 
 /*
 Test si une grille a une seule solution
-@params grid    grille à tester
+@params grid    grille Ã  tester
 @return 1 si unique, 0 sinon
 */
 int isUnique(int grid[][9]){
     int grid_copy[9][9] = {{0}}; //Copie de grid
-    int grid_to_resolve[9][9] = {{0}}; //Gille à résoudre
-    int grid_resolve[9][9] = {{0}}; //Grille contenant la résolution
+    int grid_to_resolve[9][9] = {{0}}; //Gille Ã  rÃ©soudre
+    int grid_resolve[9][9] = {{0}}; //Grille contenant la rÃ©solution
     int grid_fixes[9][9] = {{0}}; //Grille des elts fixes
 
     int i = 0, k = 0;
     int row,col;
     int value;
 
-    //On génère la grille des elts fixés
+    //On gÃ©nÃ¨re la grille des elts fixÃ©s
     for(i=0;i<=80;i++){
         row = floor(i/9);
         col = i%9;
@@ -130,7 +130,7 @@ int isUnique(int grid[][9]){
     memcpy(grid_to_resolve, grid, sizeof(grid_to_resolve));
     memcpy(grid_copy, grid, sizeof(grid_copy));
 
-    resolve(grid_copy, 0, 0); //On résoud grid_copy
+    resolve(grid_copy, 0, 0); //On rÃ©soud grid_copy
 
      for(i=0;i<=80;i++){
         row = floor(i/9);
@@ -140,7 +140,7 @@ int isUnique(int grid[][9]){
 
         value = grid_to_resolve[col][row];
 
-        //On test de résoudre la grille avec chaque k, pour voir si il y a deux solutions
+        //On test de rÃ©soudre la grille avec chaque k, pour voir si il y a deux solutions
         for(k=1;k<=9;k++){
             grid_to_resolve[col][row] = k;
 
@@ -150,7 +150,7 @@ int isUnique(int grid[][9]){
 
             if(!resolve(grid_resolve, 0, 0)) continue; //Pas de solution
 
-            if(!equal_grid(grid_copy, grid_resolve))return 0; //On a trouvé une solution différente de grid_copy => pas unique
+            if(!equal_grid(grid_copy, grid_resolve))return 0; //On a trouvÃ© une solution diffÃ©rente de grid_copy => pas unique
         }
 
         grid_to_resolve[col][row] = value;
@@ -160,16 +160,16 @@ int isUnique(int grid[][9]){
 }
 
 /*
-Génère une grille
-@params	grid	    Grille renvoyée
-@params	type	    Difficulté de la grille
+GÃ©nÃ¨re une grille
+@params	grid	    Grille renvoyÃ©e
+@params	type	    DifficultÃ© de la grille
 */
 void generate(int grid[][9], int type){
     int i, valide, position, row, col, inter;
 
     resolve(grid, 0, 1);
 
-    //On supprime des cases aléatoirement en vérifiant l'unicité
+    //On supprime des cases alÃ©atoirement en vÃ©rifiant l'unicitÃ©
     srand(time(NULL));
     for(i=0;i<type;i++){
         valide = 0;
@@ -180,13 +180,13 @@ void generate(int grid[][9], int type){
             row = floor(position/9);
             col = position%9;
 
-            if(grid[col][row] == 0) continue; //Case déjà supprimée
+            if(grid[col][row] == 0) continue; //Case dÃ©jÃ  supprimÃ©e
 
             inter = grid[col][row];
 
             grid[col][row] = 0;
 
-            //On vérifit si la grille est toujours unique
+            //On vÃ©rifit si la grille est toujours unique
             if(isUnique(grid)){valide = 1;}
             else{grid[col][row] = inter;}
         }while(!valide);

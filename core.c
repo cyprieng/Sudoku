@@ -9,8 +9,8 @@ extern CallbackWidget widgetCallback;
 
 /*
 Remplit la grille
-@params	grid	    Grille à afficher
-@params	grid_fixes	Grille des éléments fixés
+@params	grid	    Grille Ã  afficher
+@params	grid_fixes	Grille des Ã©lÃ©ments fixÃ©s
 */
 void fill_grid(int grid[9][9], int grid_fixes[9][9]){
     int i = 0;
@@ -31,7 +31,7 @@ void fill_grid(int grid[9][9], int grid_fixes[9][9]){
     font =  pango_font_description_from_string ("Sans bold 30");
     pango_font_description_set_style (font, PANGO_STYLE_ITALIC);
 
-    //On vérifit si la grille est vide
+    //On vÃ©rifit si la grille est vide
     int emptyGrid = 1;
     for(i=0;i<=80;i++){
         row = floor(i/9);
@@ -39,7 +39,7 @@ void fill_grid(int grid[9][9], int grid_fixes[9][9]){
         if(grid[col][row] != 0){emptyGrid = 0;break;}
     }
 
-    //On vérifit si grid_fixes est vide
+    //On vÃ©rifit si grid_fixes est vide
     int emptyGridFixes = 1;
     for(i=0;i<=80;i++){
         row = floor(i/9);
@@ -52,7 +52,7 @@ void fill_grid(int grid[9][9], int grid_fixes[9][9]){
         col = i%9;
         number = (char)(((int)'0')+grid[col][row]);
 
-        g_signal_handlers_destroy(GTK_OBJECT(widgetCallback.entry3[i])); //On empêche gtk d'afficher l'evt "grille résolue"
+        g_signal_handlers_destroy(GTK_OBJECT(widgetCallback.entry3[i])); //On empÃªche gtk d'afficher l'evt "grille rÃ©solue"
 
         //Condition : case ne faisant pas partie de la base
         if(!emptyGridFixes){condition = (number == '0' || grid_fixes[col][row] == 0);}
@@ -88,8 +88,8 @@ void fill_grid(int grid[9][9], int grid_fixes[9][9]){
 }
 
 /*
-Récupère la grille
-@params	grid	   Grille actuel à remplir
+RÃ©cupÃ¨re la grille
+@params	grid	   Grille actuel Ã  remplir
 */
 void get_grid(int grid[9][9]){
     int i = 0;
@@ -106,8 +106,8 @@ void get_grid(int grid[9][9]){
 }
 
 /*
-Récupère la grille des elts fixés
-@params	grid_fixes	   Grille à remplir
+RÃ©cupÃ¨re la grille des elts fixÃ©s
+@params	grid_fixes	   Grille Ã  remplir
 */
 void get_fixed_grid(int grid_fixes[9][9]){
     int i = 0;
@@ -117,7 +117,7 @@ void get_fixed_grid(int grid_fixes[9][9]){
         row = floor(i/9);
         col = i%9;
 
-        //Si le GTK_ENTRY n'est pas éditable => case fixe
+        //Si le GTK_ENTRY n'est pas Ã©ditable => case fixe
         if(gtk_editable_get_editable(GTK_EDITABLE(widgetCallback.entry3[i]))){
             grid_fixes[col][row] = 0;
         }
@@ -129,7 +129,7 @@ void get_fixed_grid(int grid_fixes[9][9]){
 
 /*
 Test si une grille est valide
-@params	grid	   Grille à tester
+@params	grid	   Grille Ã  tester
 @return 1 si valide, 0 sinon
 */
 int is_grid_valid(int grid[9][9]){
@@ -157,10 +157,10 @@ int is_grid_valid(int grid[9][9]){
 }
 
 /*
-Vérifit si deux grilles sont identiques
-@params grid1   Première grille à comparer
-@params grid2   Deuxième grille à comparer
-@return 1 si égales, 0 sinon
+VÃ©rifit si deux grilles sont identiques
+@params grid1   PremiÃ¨re grille Ã  comparer
+@params grid2   DeuxiÃ¨me grille Ã  comparer
+@return 1 si Ã©gales, 0 sinon
 */
 int equal_grid(int grid1[9][9], int grid2[9][9]){
     int i = 0;
@@ -171,7 +171,7 @@ int equal_grid(int grid1[9][9], int grid2[9][9]){
         col = i%9;
 
         if(grid1[col][row] != grid2[col][row]){
-            //Grilles différentes
+            //Grilles diffÃ©rentes
             return 0;
         }
     }

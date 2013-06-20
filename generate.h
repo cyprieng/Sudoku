@@ -4,7 +4,7 @@
 #define MEDIUM_GRID 45
 #define HARD_GRID 55
 
-void generate(int grid[][9], int type); //Génération de la grille
+void generate(int grid[][9], int type); //GÃ©nÃ©ration de la grille
 
 //Test de la grille
 int absentDeLigne (int k, int grille[9][9], int i);
@@ -12,6 +12,6 @@ int absentDeColonne (int k, int grille[9][9], int j);
 int absentDeBloc (int k, int grille[9][9], int i, int j);
 int isUnique(int grid[][9]);
 
-int resolve(int grille[9][9], int position, int generate); //Résolution
+int resolve(int grille[9][9], int position, int generate); //RÃ©solution
 
 #endif // GENERATE_H_INCLUDED

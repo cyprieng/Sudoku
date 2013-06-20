@@ -13,11 +13,11 @@ typedef struct{
 extern CallbackWidget widgetCallback;
 
 /*
-Ajoute des item à un menu
-@params	p_menu		Menu où l'on veut ajouter des items
+Ajoute des item Ã  un menu
+@params	p_menu		Menu oÃ¹ l'on veut ajouter des items
 @params	title	    Nom de l'item
 @params	callback    Fonction de callback de l'item
-@params	user_data   Données à transmettre à la fonction de callback
+@params	user_data   DonnÃ©es Ã  transmettre Ã  la fonction de callback
 */
 static void menu_item_new (GtkMenu *p_menu, const gchar *title, GCallback callback, gpointer user_data){
     GtkWidget *p_menu_item = NULL;
@@ -28,8 +28,8 @@ static void menu_item_new (GtkMenu *p_menu, const gchar *title, GCallback callba
 }
 
 /*
-Ajoute un séparateur à un menu
-@params	p_menu		Menu où l'on veut ajouter le separateur
+Ajoute un sÃ©parateur Ã  un menu
+@params	p_menu		Menu oÃ¹ l'on veut ajouter le separateur
 */
 static void menu_separator_new (GtkMenu *p_menu){
     GtkWidget *p_menu_item = NULL;
@@ -39,12 +39,12 @@ static void menu_separator_new (GtkMenu *p_menu){
 }
 
 /*
-Créer le menu
-@params	user_data	Paramètre de la fonction de callback
+CrÃ©er le menu
+@params	user_data	ParamÃ¨tre de la fonction de callback
 @return p_menu_bar contenant le menu
 */
 GtkMenuBar *menu_new (gpointer user_data){
-    //On créer la barre de menu
+    //On crÃ©er la barre de menu
     GtkWidget *p_menu_bar = NULL;
     p_menu_bar = gtk_menu_bar_new ();
 
@@ -61,7 +61,7 @@ GtkMenuBar *menu_new (gpointer user_data){
     menu_item_new (GTK_MENU (p_menu), "_Ouvrir", G_CALLBACK (cb_open_file), user_data);
     menu_item_new (GTK_MENU (p_menu), "_Enregistrer", G_CALLBACK (cb_save_file), user_data);
     menu_separator_new(GTK_MENU (p_menu));
-    menu_item_new (GTK_MENU (p_menu), g_locale_to_utf8("_Résoudre", -1, NULL, NULL, NULL), G_CALLBACK (cb_resolve), user_data);
+    menu_item_new (GTK_MENU (p_menu), g_locale_to_utf8("_RÃ©soudre", -1, NULL, NULL, NULL), G_CALLBACK (cb_resolve), user_data);
     menu_separator_new(GTK_MENU (p_menu));
     menu_item_new (GTK_MENU (p_menu), "_Imprimer", G_CALLBACK (cb_print), user_data);
     menu_separator_new(GTK_MENU (p_menu));
@@ -75,11 +75,11 @@ GtkMenuBar *menu_new (gpointer user_data){
 
 
 /*
-Ajoute des item à une toolbar
-@params	p_toolbar	Toolbar où l'on veut ajouter des items
-@params	stock_id    Id du bouton à ajouter
+Ajoute des item Ã  une toolbar
+@params	p_toolbar	Toolbar oÃ¹ l'on veut ajouter des items
+@params	stock_id    Id du bouton Ã  ajouter
 @params	callback    Fonction de callback de l'item
-@params	user_data   Données à transmettre à la fonction de callback
+@params	user_data   DonnÃ©es Ã  transmettre Ã  la fonction de callback
 */
 static void toolbar_item_new (GtkToolbar *p_toolbar, const gchar *stock_id, const gchar *text, GCallback callback, gpointer user_data){
     GtkToolItem *p_tool_item = NULL;
@@ -91,12 +91,12 @@ static void toolbar_item_new (GtkToolbar *p_toolbar, const gchar *stock_id, cons
 }
 
 /*
-Créer la toolbar
-@params	user_data	Paramètre de la fonction de callback
+CrÃ©er la toolbar
+@params	user_data	ParamÃ¨tre de la fonction de callback
 @return p_toolbar contenant la toolbar
 */
 GtkToolbar *toolbar_new (gpointer user_data){
-    //On créer la toolbar
+    //On crÃ©er la toolbar
     GtkWidget *p_toolbar = NULL;
     p_toolbar = gtk_toolbar_new ();
 
@@ -104,7 +104,7 @@ GtkToolbar *toolbar_new (gpointer user_data){
     toolbar_item_new (GTK_TOOLBAR (p_toolbar), GTK_STOCK_NEW, "Nouveau", G_CALLBACK (cb_new_dialog), user_data);
     toolbar_item_new (GTK_TOOLBAR (p_toolbar), GTK_STOCK_OPEN, "Ouvrir", G_CALLBACK (cb_open_file), user_data);
     toolbar_item_new (GTK_TOOLBAR (p_toolbar), GTK_STOCK_SAVE, "Enregistrer", G_CALLBACK (cb_save_file), user_data);
-    toolbar_item_new (GTK_TOOLBAR (p_toolbar), GTK_STOCK_EXECUTE, g_locale_to_utf8("Résoudre", -1, NULL, NULL, NULL), G_CALLBACK (cb_resolve), user_data);
+    toolbar_item_new (GTK_TOOLBAR (p_toolbar), GTK_STOCK_EXECUTE, g_locale_to_utf8("RÃ©soudre", -1, NULL, NULL, NULL), G_CALLBACK (cb_resolve), user_data);
     toolbar_item_new (GTK_TOOLBAR (p_toolbar), GTK_STOCK_PRINT, "Imprimer", G_CALLBACK (cb_print), user_data);
     toolbar_item_new (GTK_TOOLBAR (p_toolbar), GTK_STOCK_QUIT, "Quitter", G_CALLBACK (cb_quit), user_data);
 
@@ -116,8 +116,8 @@ GtkToolbar *toolbar_new (gpointer user_data){
 
 
 /*
-Créer la grille de sudoku
-@params	user_data	Paramètre de la fonction de callback
+CrÃ©er la grille de sudoku
+@params	user_data	ParamÃ¨tre de la fonction de callback
 @return p_grid contenant le tableau
 */
 GtkWidget *grid_new(gpointer user_data){
@@ -132,10 +132,10 @@ GtkWidget *grid_new(gpointer user_data){
     border.left=10;
     border.right=0;
 
-    //On créer le tableau
+    //On crÃ©er le tableau
     p_grid = gtk_table_new(9, 9, 1);
 
-    //Espacemens des cases pour gérer la taille de la bordure
+    //Espacemens des cases pour gÃ©rer la taille de la bordure
     gtk_table_set_row_spacings(GTK_TABLE(p_grid), 1);
     gtk_table_set_col_spacings(GTK_TABLE(p_grid), 1);
 
@@ -147,11 +147,11 @@ GtkWidget *grid_new(gpointer user_data){
     gtk_table_set_row_spacing(GTK_TABLE(p_grid), 5, 5);
 
     for(i=0;i<=80;i++){ //On boucle les 81 cases
-        //Récupération colonne et ligne actuelles
+        //RÃ©cupÃ©ration colonne et ligne actuelles
         row = floor(i/9);
         col = i%9;
 
-        //Création champ texte
+        //CrÃ©ation champ texte
         p_text_box[i] = gtk_entry_new();
         widgetCallback.entry3[i] = p_text_box[i];
         gtk_entry_set_width_chars(GTK_ENTRY(p_text_box[i]), 1);
@@ -161,7 +161,7 @@ GtkWidget *grid_new(gpointer user_data){
         g_object_set(G_OBJECT(p_text_box[i]), "inner-border", &border, "shadow-type", GTK_SHADOW_NONE, NULL);
         g_signal_connect(GTK_EDITABLE(p_text_box[i]), "changed", G_CALLBACK(cb_entry_modified), user_data);
 
-        //Ajout champ texte à la table
+        //Ajout champ texte Ã  la table
         gtk_table_attach(GTK_TABLE(p_grid), p_text_box[i],
                             row, row+1,
                             col, col+1,

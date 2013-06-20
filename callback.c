@@ -11,9 +11,9 @@
 extern CallbackWidget widgetCallback;
 
 /*
-Fermeture de la fenêtre
-@params	p_widget	Elément ayant déclencher la fonction
-@params	user_data	Données transmis au callback
+Fermeture de la fenÃªtre
+@params	p_widget	ElÃ©ment ayant dÃ©clencher la fonction
+@params	user_data	DonnÃ©es transmis au callback
 */
 void cb_quit(GtkWidget *p_widget, gpointer user_data){
     gtk_main_quit();
@@ -24,12 +24,12 @@ void cb_quit(GtkWidget *p_widget, gpointer user_data){
 }
 
 /*
-Affichage d'une grille générée
-@params	p_widget	Elément ayant déclencher la fonction
-@params	user_data	Données transmis au callback
+Affichage d'une grille gÃ©nÃ©rÃ©e
+@params	p_widget	ElÃ©ment ayant dÃ©clencher la fonction
+@params	user_data	DonnÃ©es transmis au callback
 */
 void cb_new_generate(GtkWidget *p_widget, gpointer user_data){
-    //Génération
+    //GÃ©nÃ©ration
     int grid[9][9] = {{0}};
     generate(grid, (int)user_data);
 
@@ -40,9 +40,9 @@ void cb_new_generate(GtkWidget *p_widget, gpointer user_data){
 }
 
 /*
-Nouvelle grille vide ou affichage difficulté
-@params	p_widget	Elément ayant déclencher la fonction
-@params	user_data	Données transmis au callback
+Nouvelle grille vide ou affichage difficultÃ©
+@params	p_widget	ElÃ©ment ayant dÃ©clencher la fonction
+@params	user_data	DonnÃ©es transmis au callback
 */
 void cb_new(GtkWidget *p_widget, gpointer user_data){
     if((int)user_data == GTK_RESPONSE_ACCEPT){ //Grille vide
@@ -50,8 +50,8 @@ void cb_new(GtkWidget *p_widget, gpointer user_data){
         int grid_fixes[9][9] = {{0}};
         fill_grid(grid, grid_fixes);
     }
-    else if((int)user_data == GTK_RESPONSE_REJECT){ //Demande de difficulté
-        GtkWidget *p_dialog = gtk_dialog_new_with_buttons(g_locale_to_utf8("Générer grille", -1, NULL, NULL, NULL),
+    else if((int)user_data == GTK_RESPONSE_REJECT){ //Demande de difficultÃ©
+        GtkWidget *p_dialog = gtk_dialog_new_with_buttons(g_locale_to_utf8("GÃ©nÃ©rer grille", -1, NULL, NULL, NULL),
                                                         GTK_WINDOW(widgetCallback.entry1),
                                                         GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
                                                         "Facile",
@@ -70,8 +70,8 @@ void cb_new(GtkWidget *p_widget, gpointer user_data){
 
 /*
 Affichage boite de dialog "nouveau"
-@params	p_widget	Elément ayant déclencher la fonction
-@params	user_data	Données transmis au callback
+@params	p_widget	ElÃ©ment ayant dÃ©clencher la fonction
+@params	user_data	DonnÃ©es transmis au callback
 */
 void cb_new_dialog(GtkWidget *p_widget, gpointer user_data){
     GtkWidget *p_dialog = gtk_dialog_new_with_buttons("Nouveau",
@@ -79,7 +79,7 @@ void cb_new_dialog(GtkWidget *p_widget, gpointer user_data){
                                                         GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
                                                         "Rentrer la grille manuellement",
                                                         GTK_RESPONSE_ACCEPT,
-                                                        g_locale_to_utf8("Générer automatiquement", -1, NULL, NULL, NULL),
+                                                        g_locale_to_utf8("GÃ©nÃ©rer automatiquement", -1, NULL, NULL, NULL),
                                                         GTK_RESPONSE_REJECT,
                                                         NULL);
     gtk_widget_show(p_dialog);
@@ -92,8 +92,8 @@ void cb_new_dialog(GtkWidget *p_widget, gpointer user_data){
 
 /*
 Ouverture d'un fichier
-@params	p_widget	Elément ayant déclencher la fonction
-@params	user_data	Données transmis au callback
+@params	p_widget	ElÃ©ment ayant dÃ©clencher la fonction
+@params	user_data	DonnÃ©es transmis au callback
 */
 void cb_open_file(GtkWidget *p_widget, gpointer user_data){
     GtkWidget *p_dialog_open;
@@ -111,7 +111,7 @@ void cb_open_file(GtkWidget *p_widget, gpointer user_data){
         int grid[9][9] = {{0}};
         int grid_fixes[9][9] = {{0}};
 
-        //On récupère et on affiche la grille
+        //On rÃ©cupÃ¨re et on affiche la grille
         get_grid_from_file(grid, grid_fixes, filename);
         fill_grid(grid, grid_fixes);
     }
@@ -124,8 +124,8 @@ void cb_open_file(GtkWidget *p_widget, gpointer user_data){
 
 /*
 Sauvegarde d'un grille
-@params	p_widget	Elément ayant déclencher la fonction
-@params	user_data	Données transmis au callback
+@params	p_widget	ElÃ©ment ayant dÃ©clencher la fonction
+@params	user_data	DonnÃ©es transmis au callback
 */
 void cb_save_file(GtkWidget *p_widget, gpointer user_data){
     GtkWidget *p_dialog_save;
@@ -138,14 +138,14 @@ void cb_save_file(GtkWidget *p_widget, gpointer user_data){
 
     gtk_file_chooser_set_do_overwrite_confirmation(GTK_FILE_CHOOSER(p_dialog_save), TRUE);
 
-   if (gtk_dialog_run(GTK_DIALOG(p_dialog_save)) == GTK_RESPONSE_ACCEPT){ //Nom du fichier a été choisi
+   if (gtk_dialog_run(GTK_DIALOG(p_dialog_save)) == GTK_RESPONSE_ACCEPT){ //Nom du fichier a Ã©tÃ© choisi
         char *filename;
         filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(p_dialog_save));
 
         int grid[9][9] = {{0}};
         int grid_fixes[9][9] = {{0}};
 
-        //On récupère la grille
+        //On rÃ©cupÃ¨re la grille
         get_grid(grid);
         get_fixed_grid(grid_fixes);
 
@@ -159,15 +159,15 @@ void cb_save_file(GtkWidget *p_widget, gpointer user_data){
 }
 
 /*
-Evènement lors du changement d'une case de la grille
-@params	p_widget	Elément ayant déclencher la fonction
-@params	user_data	Données transmis au callback
+EvÃ¨nement lors du changement d'une case de la grille
+@params	p_widget	ElÃ©ment ayant dÃ©clencher la fonction
+@params	user_data	DonnÃ©es transmis au callback
 */
 void cb_entry_modified(GtkWidget *p_widget, gpointer user_data){
     int i,row,col, value, incorrect = 0;
     char entry_value = *gtk_entry_get_text(GTK_ENTRY(p_widget));
 
-    if(!isdigit(entry_value)){ //On empêche l'user de saisir autre chose que des chiffres
+    if(!isdigit(entry_value)){ //On empÃªche l'user de saisir autre chose que des chiffres
         gtk_entry_set_text(GTK_ENTRY(p_widget), "");
     }
 
@@ -176,7 +176,7 @@ void cb_entry_modified(GtkWidget *p_widget, gpointer user_data){
     int grid_fixes[9][9] = {{0}};
     get_fixed_grid(grid_fixes);
 
-    //On vérifit si grid_fixes est vide
+    //On vÃ©rifit si grid_fixes est vide
     int emptyGridFixes = 1;
     for(i=0;i<=80;i++){
         row = floor(i/9);
@@ -185,7 +185,7 @@ void cb_entry_modified(GtkWidget *p_widget, gpointer user_data){
     }
 
     for(i=0;i<81;i++){
-        value = *gtk_entry_get_text(GTK_ENTRY(widgetCallback.entry3[i])) - '0'; //On récupère le char de la case
+        value = *gtk_entry_get_text(GTK_ENTRY(widgetCallback.entry3[i])) - '0'; //On rÃ©cupÃ¨re le char de la case
         if(value == -48) value = 0; //" " => 0
 
         row = floor(i/9);
@@ -218,7 +218,7 @@ void cb_entry_modified(GtkWidget *p_widget, gpointer user_data){
     }
 
     if(incorrect == 0){ //Pas d'erreur
-        //On vérifit si la grille est remplie
+        //On vÃ©rifit si la grille est remplie
         int filledGrid = 1;
         for(i=0;i<=80;i++){
             row = floor(i/9);
@@ -226,12 +226,12 @@ void cb_entry_modified(GtkWidget *p_widget, gpointer user_data){
             if(grid[col][row] == 0){filledGrid = 0;break;}
         }
 
-        if(filledGrid){ //Rempli + pas d'erreur => grille résolue
+        if(filledGrid){ //Rempli + pas d'erreur => grille rÃ©solue
             GtkWidget *p_dialog = gtk_message_dialog_new(GTK_WINDOW(widgetCallback.entry1),
                                                         GTK_DIALOG_DESTROY_WITH_PARENT,
                                                         GTK_MESSAGE_INFO,
                                                         GTK_BUTTONS_CLOSE,
-                                                        g_locale_to_utf8("Bravo la grille est résolue !", -1, NULL, NULL, NULL),
+                                                        g_locale_to_utf8("Bravo la grille est rÃ©solue !", -1, NULL, NULL, NULL),
                                                         NULL);
 
             gtk_dialog_run (GTK_DIALOG (p_dialog));
@@ -246,19 +246,19 @@ void cb_entry_modified(GtkWidget *p_widget, gpointer user_data){
 
 /*
 Affichage de la solution de la grille
-@params	p_widget	Elément ayant déclencher la fonction
-@params	user_data	Données transmis au callback
+@params	p_widget	ElÃ©ment ayant dÃ©clencher la fonction
+@params	user_data	DonnÃ©es transmis au callback
 */
 void cb_resolve(GtkWidget *p_widget, gpointer user_data){
     int i,row,col;
 
-    //On récupère la grille
+    //On rÃ©cupÃ¨re la grille
     int grid[9][9] = {{0}};
     get_grid(grid);
     int grid_fixes[9][9] = {{0}};
     get_fixed_grid(grid_fixes);
 
-    //On vérifit si grid_fixes est vide
+    //On vÃ©rifit si grid_fixes est vide
     int emptyGridFixes = 1;
     for(i=0;i<=80;i++){
         row = floor(i/9);
@@ -267,7 +267,7 @@ void cb_resolve(GtkWidget *p_widget, gpointer user_data){
     }
 
     if(!emptyGridFixes){
-        //On récupère la base de la grille
+        //On rÃ©cupÃ¨re la base de la grille
         for(i=0;i<=80;i++){
             row = floor(i/9);
             col = i%9;
@@ -283,7 +283,7 @@ void cb_resolve(GtkWidget *p_widget, gpointer user_data){
         }
     }
 
-    //On résout et on affiche
+    //On rÃ©sout et on affiche
     if(is_grid_valid(grid)){
         resolve(grid, 0, 0);
         fill_grid(grid, grid_fixes);
