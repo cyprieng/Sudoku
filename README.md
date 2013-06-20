@@ -11,5 +11,6 @@ Features:
 Download:
 
 * Windows: [sudoku.rar](http://dl.dropbox.com/u/16229033/sudoku.rar)
+* Linux: [sudoku.tar.gz](https://dl.dropboxusercontent.com/u/16229033/sudoku.tar.gz)
 
 ![sudoku](http://img715.imageshack.us/img715/3478/sudokug.png)
